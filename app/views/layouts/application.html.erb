@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>TechTalentBlog</title>
+
+	  	<%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
+	  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  
+	  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  	<%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" %>
+	  	
+	  	<%= csrf_meta_tags %>
+
+	</head>
+	<body>
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+		  	
+				<ul class="nav navbar-nav navbar-right">
+			        <li><% if user_signed_in? %>
+						<%= link_to "Edit Profile", edit_user_registration_path %>
+						<% end %></li>
+					<li><% if user_signed_in? %>
+						<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+						<% end %></li>
+			    </ul>
+			 
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class="container">
+
+			<%= yield %>
+
+		</div>
+	</body>
+</html>
